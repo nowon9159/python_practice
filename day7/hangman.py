@@ -18,5 +18,14 @@ for i in range(0,len(ran_word)):
     selected_word.append(ran_word[i])
 
 # 인풋 값 받기
+print(ran_word)
+guess_word = input("Guess a letter : ")
+
+# 유저 인풋 값 확인해서 선택된 배열의 값과 비교
+for i in range(0,len(ran_word)):
+    if guess_word == selected_word[i] :
+        print("Right")
+    else:
+        print("Wrong")
 
 
