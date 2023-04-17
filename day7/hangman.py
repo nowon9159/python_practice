@@ -8,7 +8,7 @@
 # 목숨 안에 단어를 못 맞추면 실패 -> 목숨이 0일때 모든 빈칸이 채워지지 않았는가?
 
 import random
-
+import os
 # 단어 배열에서 아무거나 추출
 words = ["book", "phone", "chair", "table", "cup", "pen", "pencil", "bag", "door", "key", "spoon"]
 ran_word = random.choice(words)
@@ -21,22 +21,28 @@ for i in range(len_word):
 
 print(ran_word)
 
-life = len_word
+life = 6
 
 end_of_game = False
 
 while not end_of_game:
     # 인풋 값 받기
     input_word = input("Guess a letter: ").lower()
-
+    os.system('cls')
     # 단어 배열이랑 인풋 값이랑 비교해서 일치하면 _ 배열에 insert
     for i in range(len_word):
         if ran_word[i] == input_word:
             mark_word[i] = input_word
+    if input_word not in mark_word:
+        life -= 1
+        print(f"Wrong letter \n You Have {life} life now")
+        if life == 0:
+            end_of_game = True
+
     #print
     print(mark_word)
 
     if mark_word.count("_") == 0 :
         end_of_game = True
         print("You Win")
-    clear()
+    
