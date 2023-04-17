@@ -33,9 +33,10 @@ while not end_of_game:
     for i in range(len_word):
         if ran_word[i] == input_word:
             mark_word[i] = input_word
-    
+    #print
     print(mark_word)
 
     if mark_word.count("_") == 0 :
         end_of_game = True
         print("You Win")
+    clear()
