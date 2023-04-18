@@ -14,55 +14,33 @@ shift = int(input("Type the shift number:\n"))
 # 새로운 배열에 인덱스 값을 shift 만큼 +
 # 인덱스 값으로 알파벳 값 추출
 
-arr_text_index = []
-arr_encrypted_text = [] 
-encrypted_text = ""
-length_text = len(text)
-
-
-#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
-def encrypt(text, shift):
-    arr_text = list(text)
-    # print(arr_text)
-    for i in range(length_text):
-        # arr_text_index 에 alphabet
-        arr_text_index = int(alphabet.index(arr_text[i]))+shift
-        encrypted_text = alphabet[arr_text_index]
-        arr_encrypted_text.append(encrypted_text)
-    # print(arr_encrypted_text)
-    for i in range(len(arr_encrypted_text)):
-        encrypted_text = ''.join(arr_encrypted_text) # join 함수 => '구분자'.join(리스트)
-    print(f"This is a encrypted input : {encrypted_text}")
-        
-def decrypt(text, shift):
-    cipher_text = ""
-    for i in text:
-        position = alphabet.index(i) # index 함수는 배열의 인덱스 값을 추출 가능
-        new_position = position - shift # shift 만큼 추출한 인덱스 값 빼기
-        new_letter = alphabet[new_position] # 뉴포지션의 인덱스 값을 기반으로 알파벳 값 뽑아 내 new_letter 집어 넣기
-        cipher_text += new_letter # cipher_text 에 new_letter 순차적으로 집어 넣기
-    print(f"The Decoded text is {cipher_text}")
 
 
 
 
+def ceaser(direction, text, shift):
+    if direction == "encode" :
+        encrypt_text = ""
+        for i in text:
+            position = alphabet.index(i)
+            new_position = position + shift
+            new_letter = alphabet[new_position] 
+            encrypt_text += new_letter 
+    elif direction == "decode" :
+        decrypt_text = ""
+        for i in text:
+            position = alphabet.index(i)
+            new_position = position - shift
+            new_letter = alphabet[new_position] 
+            decrypt_text += new_letter
 
-    #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.
-    #e.g.
-    #plain_text = "hello"
-    #shift = 5
-    #cipher_text = "mjqqt"
-    #print output: "The encoded text is mjqqt"
+ceaser(direction, text, shift)
 
-    ##HINT: How do you get the index of an item in a list:
-    #https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
+    # cipher_text = ""
+    # for i in text:
+    #     position = alphabet.index(i) # index 함수는 배열의 인덱스 값을 추출 가능
+    #     new_position = position - shift # shift 만큼 추출한 인덱스 값 빼기
+    #     new_letter = alphabet[new_position] # 뉴포지션의 인덱스 값을 기반으로 알파벳 값 뽑아 내 new_letter 집어 넣기
+    #     cipher_text += new_letter # cipher_text 에 new_letter 순차적으로 집어 넣기
+    # print(f"The Decoded text is {cipher_text}")
 
-    ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
-
-
-#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message.
-
-if direction == "encode":
-    encrypt(text, shift)
-elif direction == "decode":
-    decrypt(text, shift)
