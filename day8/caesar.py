@@ -13,26 +13,25 @@ shift = int(input("Type the shift number:\n"))
 # 새로운 배열에 인덱스 값을 shift 만큼 +
 # 인덱스 값으로 알파벳 값 추출
 
-arr_text = list(text)
 arr_text_index = []
-
-encrypted_text = "" 
+arr_encrypted_text = [] 
+encrypted_text = ""
 length_text = len(text)
 
-print(arr_text)
 #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 def encrypt(text, shift):
+    arr_text = list(text)
+    # print(arr_text)
     for i in range(length_text):
-        arr_text_index = int(alphabet.index(arr_text[i]))+1
+        # arr_text_index 에 alphabet
+        arr_text_index = int(alphabet.index(arr_text[i]))+shift
         encrypted_text = alphabet[arr_text_index]
+        arr_encrypted_text.append(encrypted_text)
+    # print(arr_encrypted_text)
+    for i in range(len(arr_encrypted_text)):
+        encrypted_text = ''.join(arr_encrypted_text)
+        print("This is a encrypted input : " + encrypted_text)
         
-
-
-        
-    
-
-    
-
 
 
 
