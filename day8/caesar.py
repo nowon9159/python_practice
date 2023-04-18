@@ -9,16 +9,31 @@ shift = int(input("Type the shift number:\n"))
 
 # 텍스트가 test 라면 [t, e, s, t] 로 뽑아서
 # 인덱스 번호 추출 한 뒤 인덱스 번호에서 shift 만큼 + 하기
-#
+# array.index(x) 함수를 사용하면 된다. -> 뽑아낸 뒤 새로운 배열에 append
+# 새로운 배열에 인덱스 값을 shift 만큼 +
+# 인덱스 값으로 알파벳 값 추출
 
-arr_encrypt = []
+arr_text = list(text)
+arr_text_index = []
 
+encrypted_text = "" 
+length_text = len(text)
 
+print(arr_text)
 #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 def encrypt(text, shift):
-    length_text = len(text)
-    arr_encrypt = list(text)
-    for i in 
+    for i in range(length_text):
+        arr_text_index = int(alphabet.index(arr_text[i]))+1
+        encrypted_text = alphabet[arr_text_index]
+        
+
+
+        
+    
+
+    
+
+
 
 
     #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.
