@@ -10,17 +10,23 @@
 #     2.1 if yes 라면 스크린 초기화 하고 이름과 입찰가 입력
 #     2.2 if no 라면 누가 가장 높은 입찰가를 입력 했는 지 확인하고 낙찰인과 낙찰가 출력
 
+# 2번은 반복 로직 입찰인 있는지 체크 -> 있다면 반복문으로 이름과 입찰가 입력
+# 반복문으로 입력한 이름과 입찰가를 Key Value 형식으로 딕셔너리에 저장
+# Value 값만 뽑아내 가장 큰 수를 체크
+# 가장 큰 수가 낙찰가가 되며 변수에 저장 후, 낙찰가의 index 값으로 Key 를 뽑아내 낙찰인을 변수에 저장
+
 import os
 from art import logo
 
-os.system("cls") # 화면 초기화
+def clear() : 
+    os.system("cls") # 화면 초기화
 
 print(logo)
 print("Welcome to the secret auction program.")
+
 user_name = ""
 user_bid = ""
 have_others = "yes"
-
 dict_price = {}
 list_price = []
 list_price_ascending = []
@@ -32,17 +38,14 @@ def auction(have_others) :
         user_bid = input("What's your bid? \n")
         have_others = input("Are there any other bidders? Type 'yes' or 'no'. \n")
 
+        clear()
+        # input 값 받아서 key value 형식으로 dictionary 에 저장
         dict_price[user_name] = user_bid
         
-        # os.system("cls") # 화면 초기화
-        print(dict_price)
+        dict_price
 
-        for i in dict_price :
-            list_price[i] = dict_price[i]
-        
-        list_price_ascending = list_price.sort(reverse=True)
-        winner = list_price_ascending.index(list_price[0])
-        winner_price = list_price[0]
+        # 화면 초기화
+        # os.system("cls") 
 
 
         if  have_others == "no" :
