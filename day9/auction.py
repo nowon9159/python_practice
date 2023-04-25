@@ -13,25 +13,40 @@
 import os
 from art import logo
 
-# os.system("cls") # 화면 초기화
+os.system("cls") # 화면 초기화
 
 print(logo)
 print("Welcome to the secret auction program.")
-user_name = input("What is your name? \n")
-user_bid = input("What's your bid? \n")
-have_others = input("Are there any other bidders? Type 'yes' or 'no'. \n")
+user_name = ""
+user_bid = ""
+have_others = "yes"
 
-dict_price = {
-    user_name : user_bid 
-}
+dict_price = {}
+list_price = []
+list_price_ascending = []
 
-while have_others == "yes" :
-    user_name = input("What is your name? \n")
-    user_bid = input("What's your bid? \n")
-    have_others = input("Are there any other bidders? Type 'yes' or 'no'. \n")
+def auction(have_others) :
+    while have_others == "yes" :
+        
+        user_name = input("What is your name? \n")
+        user_bid = input("What's your bid? \n")
+        have_others = input("Are there any other bidders? Type 'yes' or 'no'. \n")
 
-    dict_price[user_name] = user_bid
+        dict_price[user_name] = user_bid
+        
+        # os.system("cls") # 화면 초기화
+        print(dict_price)
 
-    if have_others == "no" :
-        print(f"456")
-        break
+        for i in dict_price :
+            list_price[i] = dict_price[i]
+        
+        list_price_ascending = list_price.sort(reverse=True)
+        winner = list_price_ascending.index(list_price[0])
+        winner_price = list_price[0]
+
+
+        if  have_others == "no" :
+            print(f"The winner is ${winner} with a bid of ${winner_price}")    
+            break
+
+auction(have_others)
