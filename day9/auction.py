@@ -5,3 +5,33 @@
 # 유도합니다 그리고 가장 높은 입찰가가 정해져서 경매가 끝날 때까지 다른 사람이 얼마를 입찰했는지
 # 모르는 경매인 비밀 경매라는 것이 있습니다 이번엔 그 프로그램을 만들어보도록 하겠습니다
 
+# 1. 로고 출력 / 이름 입력, 입찰가 입력
+# 2. 다른 입찰인 있는지 yes or no
+#     2.1 if yes 라면 스크린 초기화 하고 이름과 입찰가 입력
+#     2.2 if no 라면 누가 가장 높은 입찰가를 입력 했는 지 확인하고 낙찰인과 낙찰가 출력
+
+import os
+from art import logo
+
+# os.system("cls") # 화면 초기화
+
+print(logo)
+print("Welcome to the secret auction program.")
+user_name = input("What is your name? \n")
+user_bid = input("What's your bid? \n")
+have_others = input("Are there any other bidders? Type 'yes' or 'no'. \n")
+
+dict_price = {
+    user_name : user_bid 
+}
+
+while have_others == "yes" :
+    user_name = input("What is your name? \n")
+    user_bid = input("What's your bid? \n")
+    have_others = input("Are there any other bidders? Type 'yes' or 'no'. \n")
+
+    dict_price[user_name] = user_bid
+
+    if have_others == "no" :
+        print(f"456")
+        break
