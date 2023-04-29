@@ -6,13 +6,37 @@
 
 
 
-first_number = input("What's the first number?: ")
+first_number = int(input("What's the first number?: "))
 value_operation = input("+\n-\n*\n/\nPick an operation: ")
-next_number = input("What's the next number?: ")
+next_number = int(input("What's the next number?: "))
 
-check_continue = input("Type 'y' to continue calculating with {} or type 'n' to start a new claculation: ")
+check_continue = input(f"Type 'y' to continue calculating with {first_number} or type 'n' to start a new claculation: ")
 
 value_continue = False
 
+def add(first_number, next_number):
+    return first_number + next_number
+
+def minus(first_number, next_number):
+    return first_number - next_number
+
+def multiply(first_number, next_number):
+    return first_number * next_number
+
+def divide(first_number, next_number):
+    return first_number / next_number
+
 while not value_continue :
+    if value_operation == "+":
+        add(first_number, next_number)
+    elif value_operation == "-":
+        minus(first_number, next_number)
+
+    elif value_operation == "*":
+        multiply(first_number, next_number)
+
+    elif value_operation == "/":
+        divide(first_number, next_number)
     
+    if check_continue == "y":
+        value_continue = False
