@@ -4,39 +4,32 @@
 # 수식과 답을 표현 하고
 # y를 타이핑 하면 계산된 답으로 다시 계산할지 n을 타이핑하면 새로운 계산을 할지 선택
 
+value_continue = True
+after_one_operation = False
 
-
-first_number = int(input("What's the first number?: "))
-value_operation = input("+\n-\n*\n/\nPick an operation: ")
-next_number = int(input("What's the next number?: "))
-
-check_continue = input(f"Type 'y' to continue calculating with {first_number} or type 'n' to start a new claculation: ")
-
-value_continue = False
-
-def add(first_number, next_number):
-    return first_number + next_number
-
-def minus(first_number, next_number):
-    return first_number - next_number
-
-def multiply(first_number, next_number):
-    return first_number * next_number
-
-def divide(first_number, next_number):
-    return first_number / next_number
-
-while not value_continue :
+def calculator(first_number, next_number, value_operation):
     if value_operation == "+":
-        add(first_number, next_number)
+        return first_number + next_number
     elif value_operation == "-":
-        minus(first_number, next_number)
-
+        return first_number - next_number
     elif value_operation == "*":
-        multiply(first_number, next_number)
-
+        return first_number * next_number
     elif value_operation == "/":
-        divide(first_number, next_number)
-    
-    if check_continue == "y":
+        return first_number / next_number
+    else :
+        print("You Have a Wrong Input.")
         value_continue = False
+
+while value_continue :
+    first_number = int(input("What's the first number?: ")) # 첫째 값 받는다
+    value_operation = input("+\n-\n*\n/\nPick an operation: ") # 어떤 연산을 할 지 고르기
+    next_number = int(input("What's the next number?: ")) # 둘째 값 받는다
+
+    operation_number = calculator(first_number, next_number, value_operation)
+
+    check_continue = input(f"Type 'y' to continue calculating with {operation_number} or type 'n' to start a new claculation: ") # 연산을 계속 할 지 결정
+
+    if check_continue == "y":
+        first_number = operation_number
+    elif check_continue == "n":
+        break
