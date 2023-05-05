@@ -3,7 +3,11 @@
 # 숫자와 연산하기위한 또 다른 숫자를 선택함
 # 수식과 답을 표현 하고
 # y를 타이핑 하면 계산된 답으로 다시 계산할지 n을 타이핑하면 새로운 계산을 할지 선택
+# y를 타이핑 한 두번째 연산 부터는 first_number의 인풋 값을 받지 않고 연산 된 값을 first_number로 대체
 
+value_continue = True
+value_after_2ndoperation = "False"
+operation_number = 0
 
 
 first_number = int(input("What's the first number?: "))
@@ -27,17 +31,24 @@ def divide(first_number, next_number):
     return first_number / next_number
 
 while not value_continue :
-    
-    if check_continue == "y":
-        value_continue = False
-    
     if value_operation == "+":
-        add(first_number, next_number)
+        return first_number + next_number
     elif value_operation == "-":
         minus(first_number, next_number)
     elif value_operation == "*":
         multiply(first_number, next_number)
     elif value_operation == "/":
-        divide(first_number, next_number)
+        return first_number / next_number
+    else :
+        print("You Put a Wrong Input.")
+
+while value_continue :
+    if value_after_2ndoperation == "True" :
+        first_number = operation_number
+    elif value_after_2ndoperation == "False" :
+        first_number = int(input("What's the first number?: ")) # 첫째 값 받는다
+
+    value_operation = input("+\n-\n*\n/\nPick an operation: ") # 어떤 연산을 할 지 고르기
+    next_number = int(input("What's the next number?: ")) # 둘째 값 받는다
     
     
