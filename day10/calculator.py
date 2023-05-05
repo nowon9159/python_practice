@@ -27,16 +27,17 @@ def divide(first_number, next_number):
     return first_number / next_number
 
 while not value_continue :
+    
+    if check_continue == "y":
+        value_continue = False
+    
     if value_operation == "+":
         add(first_number, next_number)
     elif value_operation == "-":
         minus(first_number, next_number)
-
     elif value_operation == "*":
         multiply(first_number, next_number)
-
     elif value_operation == "/":
         divide(first_number, next_number)
     
-    if check_continue == "y":
-        value_continue = False
+    
