@@ -13,5 +13,9 @@
 import random as ran
 
 # 카드의 값을 리스트에 저장
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10]
+ran_card = ran.choice(cards)
+
+diller_score = []
+my_score = []
 
