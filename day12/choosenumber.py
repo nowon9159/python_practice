@@ -5,8 +5,9 @@
 # 3. 1부터 100 숫자 하나를 고르게 되면 Too high Too low 표시
 # 4. 정답을 맞추면 정답을 맞췄다고 출력
 # 5. 2~4 반복
-# 6. 반복 시 난이도 설정 가능 easy , hard easy 는 맞출 수 있는 기회가 10번 hard는 5번
+# 6. 난이도 설정 가능 easy , hard easy 는 맞출 수 있는 기회가 10번 hard는 5번
 
+import random
 
 start_logo = """
                         _   _                         _             
@@ -21,6 +22,8 @@ print(start_logo)
 continue_value = True
 game_level = input("Welcome Choose your game level 'easy' or 'hard'")
 game_life = 0
+user_number = 0
+game_number = random.randrange(1, 101)
 
 if game_level == "easy" :
     game_life = 10
@@ -30,10 +33,21 @@ else :
     print("You choose wrong level")
     game_level = input("Choose your game level 'easy' or 'hard'")
 
-def guess_number():
-    while continue_value :
-        
-        return False
+def choose_number() :
+    
+    input(f"Choose your number, Your number is {user_number}")
+
+while continue_value :
+    user_number = input(f"Choose your number, Your number is {user_number}")
+    if user_number == game_number and game_life > 0 :
+        choose_number()
+        continue_value = True
+    elif user_number != game_number and game_life == 0 :
+        print("Your life is 0, you lose")
+    
+
+
+
 
 
 
