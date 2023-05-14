@@ -19,36 +19,48 @@ start_logo = """
 
 print(start_logo)
 
-continue_value = True
-game_level = input("Welcome Choose your game level 'easy' or 'hard'")
-game_life = 0
-user_number = 0
-game_number = random.randrange(1, 101)
+def guess_number():
+    game_level = input("Welcome Choose your game level 'easy' or 'hard' : ")
+    game_life = 0
+    user_number = 0
+    game_number = random.randrange(1, 101)
+    continue_value = True
 
-if game_level == "easy" :
-    game_life = 10
-elif game_level == "hard" :
-    game_life = 5
-else :
-    print("You choose wrong level")
-    game_level = input("Choose your game level 'easy' or 'hard'")
-
-def choose_number() :
+    if game_level == "easy" :
+        game_life = 10
+    elif game_level == "hard" :
+        game_life = 5
+    else :
+        print("You choose wrong level")
+        continue_value = False
     
-    input(f"Choose your number, Your number is {user_number}")
-
-while continue_value :
-    user_number = input(f"Choose your number, Your number is {user_number}")
-    if user_number == game_number and game_life > 0 :
-        choose_number()
-        continue_value = True
-    elif user_number != game_number and game_life == 0 :
-        print("Your life is 0, you lose")
+    # 반복 로직
+    # 유저에게 1~100 중에 숫자를 하나 고르게 한다.
+    # 랜덤 숫자와 유저의 숫자를 비교해서 > < == 의 판단을 해준다.
+    # 만약 유저 > 랜덤 이면 Too high 를 출력해주고 유저에게 인풋 다시 받기 && life 하나 깎기
     
-
-
-
-
-
-
+    while continue_value :
+        user_number = int(input(f"Choose your number : "))
+        
+        if user_number > game_number :
+            game_life = game_life - 1
+            print(f"Your number is {user_number} , too high \n Your life is {game_life}")
+        elif user_number < game_number :
+            game_life = game_life - 1
+            print(f"Your number is {user_number} , too low \n Your life is {game_life}")
+        elif user_number == game_number :
+            print(f"You got it !!")
+            continue_value = False
+        
+        if game_life == 0 :
+            print("Your life is 0, You lose")
+            continue_value = False
+            
 guess_number()
+    
+    
+
+
+
+    
+    
