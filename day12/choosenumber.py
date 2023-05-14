@@ -25,7 +25,7 @@ def guess_number():
     user_number = 0
     game_number = random.randrange(1, 101)
     continue_value = True
-
+    
     if game_level == "easy" :
         game_life = 10
     elif game_level == "hard" :
@@ -38,9 +38,12 @@ def guess_number():
     # 유저에게 1~100 중에 숫자를 하나 고르게 한다.
     # 랜덤 숫자와 유저의 숫자를 비교해서 > < == 의 판단을 해준다.
     # 만약 유저 > 랜덤 이면 Too high 를 출력해주고 유저에게 인풋 다시 받기 && life 하나 깎기
-    
     while continue_value :
-        user_number = int(input(f"Choose your number : "))
+        try :
+            user_number = int(input(f"Choose the number 1 ~ 100 : "))
+        except ValueError:
+            print("You choose wrong number")
+            break
         
         if user_number > game_number :
             game_life = game_life - 1
@@ -50,12 +53,10 @@ def guess_number():
             print(f"Your number is {user_number} , too low \n Your life is {game_life}")
         elif user_number == game_number :
             print(f"You got it !!")
-            continue_value = False
+            break
         
         if game_life == 0 :
-            print("Your life is 0, You lose")
-            continue_value = False
-            
+            print(f"Your life is 0, You lose ㅋ, The number is {game_number}")
+            break
+        
 guess_number()
-    
-    
