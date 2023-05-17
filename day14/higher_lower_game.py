@@ -38,37 +38,49 @@ data_B_country = ran_data_B['country']
 
 
 while True :
-    print(logo)
     os.system('cls')
+    print(logo)
     
+    # 정답일 시 스코어 출력
     if score != 0 and init_game == False :
         print(f"You're right! Current score: {score}.")
+    
     print(f'Compare A: {data_A_name}, a {data_A_desc}, from {data_A_country}.')
     print(vs)
     print(f'Against B: {data_B_name}, a {data_B_desc}, from {data_B_country}.')
+    
     user_input = input("Who has more followers? Type 'A' or 'B' : ")
 
     if user_input == 'A' and data_A_follower > data_B_follower :
         init_game = False
+
         ran_data_B = random.choice(data)
-        print(ran_data_B)
-        score = score + 1
-    elif user_input == 'B' and data_B_follower > data_A_follower :
+
+        data_B_name = ran_data_B['name'] 
+        data_B_follower = ran_data_B['follower_count'] 
+        data_B_desc = ran_data_B['description']
+        data_B_country = ran_data_B['country']
+
+        score += 1
+    elif user_input == 'B' and data_A_follower < data_B_follower :
         init_game = False
-        
+
+        # 기존 B 값 A 값으로 매핑
         data_A_name = data_B_name
         data_A_follower = data_B_follower
         data_A_desc = data_B_desc
         data_A_country = data_B_country
 
+        # 기존 B값 새로운 B 값으로 대체
         ran_data_B = random.choice(data)
         data_B_name = ran_data_B['name'] 
         data_B_follower = ran_data_B['follower_count'] 
         data_B_desc = ran_data_B['description']
         data_B_country = ran_data_B['country']
 
-        score = score + 1
+        score += 1
     else:
+        os.system('cls')
         print(logo)
         print(f"You're wrong, Your score is {score}")
         break
