@@ -27,10 +27,17 @@ init_game = True
 ran_data_A = random.choice(data) 
 ran_data_B = random.choice(data) 
 
+# ran_data_A != ran_data_B 처리
+if ran_data_A == ran_data_B :
+    ran_data_B = random.choice(data) 
+
+
+""" 리팩토링 // 변수 담는 처리를 함수화 하기 """
 data_A_name = ran_data_A['name'] 
 data_A_follower = ran_data_A['follower_count'] 
 data_A_desc = ran_data_A['description']
 data_A_country = ran_data_A['country']
+
 data_B_name = ran_data_B['name'] 
 data_B_follower = ran_data_B['follower_count'] 
 data_B_desc = ran_data_B['description']
@@ -44,7 +51,7 @@ while True :
     # 정답일 시 스코어 출력
     if score != 0 and init_game == False :
         print(f"You're right! Current score: {score}.")
-    
+    """ 함수를 이용한 print 출력 """
     print(f'Compare A: {data_A_name}, a {data_A_desc}, from {data_A_country}.')
     print(vs)
     print(f'Against B: {data_B_name}, a {data_B_desc}, from {data_B_country}.')
