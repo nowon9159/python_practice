@@ -51,7 +51,7 @@ while True :
     # 정답일 시 스코어 출력
     if score != 0 and init_game == False :
         print(f"You're right! Current score: {score}.")
-    """ 함수를 이용한 print 출력 """
+    """ 리팩토링 // 함수를 이용한 print 출력 """
     print(f'Compare A: {data_A_name}, a {data_A_desc}, from {data_A_country}.')
     print(vs)
     print(f'Against B: {data_B_name}, a {data_B_desc}, from {data_B_country}.')
