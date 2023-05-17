@@ -21,6 +21,9 @@ from art import logo, vs
 import os # os.system('clear')
 import random 
 
+score = 0
+init_game = True
+
 ran_data_A = random.choice(data) 
 ran_data_B = random.choice(data) 
 
@@ -33,16 +36,11 @@ data_B_follower = ran_data_B['follower_count']
 data_B_desc = ran_data_B['description']
 data_B_country = ran_data_B['country']
 
-score = 0
-init_game = True
-
-print(ran_data_B)
-
-
 
 while True :
-    os.system('cls')
     print(logo)
+    os.system('cls')
+    
     if score != 0 and init_game == False :
         print(f"You're right! Current score: {score}.")
     print(f'Compare A: {data_A_name}, a {data_A_desc}, from {data_A_country}.')
@@ -57,13 +55,21 @@ while True :
         score = score + 1
     elif user_input == 'B' and data_B_follower > data_A_follower :
         init_game = False
+        
         data_A_name = data_B_name
         data_A_follower = data_B_follower
         data_A_desc = data_B_desc
         data_A_country = data_B_country
+
         ran_data_B = random.choice(data)
+        data_B_name = ran_data_B['name'] 
+        data_B_follower = ran_data_B['follower_count'] 
+        data_B_desc = ran_data_B['description']
+        data_B_country = ran_data_B['country']
+
         score = score + 1
     else:
+        print(logo)
         print(f"You're wrong, Your score is {score}")
         break
 
