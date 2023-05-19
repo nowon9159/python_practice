@@ -15,8 +15,32 @@
 # 3. 동전을 처리할 수 있어야 한다.
 # -> 동전을 종류별로 넣어서 커피의 가격보다 낮은 가격의 동전을 넣게 되면 커피는 나오지 않고 동전은 반환 된다.
 # -> 커피의 가격보다 높은 가격의 동전을 넣게 되면 커피 가격을 기준으로 거스름돈을 주게 된다.
+menu = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
 
-from data import menu
 
 # 현재 남은 리소스 선언
 resources = {
@@ -25,45 +49,61 @@ resources = {
     "coffee": 100, # g
 }
 
+# 오늘 매출액
 today_take = 0
-
 
 ## 커피 만드는 로직 재 정리
 # 1. 어떤 커피인지 알아야 함 -> 함수 선언 시 input 값 파라미터로 받아서 함수 안에서 체크
 # 2. 해당 커피를 만들 때 드는 리소스 비용을 현재 리소스 비용과 비교해야함.
 # -> 어떤 커피인지 체크 후에 리소스 얼마 남았는 지 비교
 # 2.1 비교해서 리소스 비용이 더 많으면 진행 적으면 return false
-def make_menu(user_input, resources):
-    dict_resources = resources
-    dict_ingre = menu[user_input]['ingredients']
-    if user_input == 'espresso':
-        
-    elif user_input == 'latte' or user_input == 'cappuccino' :
+def can_make(user_input):
+    for item in user_input:
+        if user_input[item] > resources[item]:
+            print(f"Sorry there is not enough {item}.")
+            return False
+    return True
 
-    elif user_input == 'report':
+def make_coffee(items, user_input):
+    for item in items:
+        resources[item] -= items[item]
+    print(f"Here is your {user_input} ☕. Enjoy!")
 
 
-## 돈계산 로직 재 정리
-# 만약 
-
-def check_all_take(quaters_input, dimes_input, nickels_input, cents_input) :
+def check_changes(ingre_coffee, user_input, quaters_input, dimes_input, nickels_input, cents_input):
+    cost = menu[user_input]['cost']
     all_cost = (quaters_input * 0.01) + (dimes_input * 0.1) + (nickels_input * 0.05) + (cents_input * 0.25)
-    
-
+    result_cost = all_cost - cost
+    if all_cost > cost :
+        print(f"Here is ${result_cost} in change.")
+        make_coffee(ingre_coffee, user_input)
+        global today_take
+        today_take += cost
+    else :
+        print("Sorry that's not enough money. Money refunded.")
+        return False
 
 while True :
     # 오늘 번 돈
     user_input = input("What would you like? (espresso/latte/cappuccino): ")
-    
-    print("Please insert coins.")
-    quaters_input = input("how many quarters?: ")
-    dimes_input = input("how many dimes?: ")
-    nickels_input = input("how many nickels?: ")
-    cents_input = input("how many cents?: ")
+    if user_input == "report":
+        print(f"Water: {resources['water']}ml")
+        print(f"Milk: {resources['milk']}ml")
+        print(f"Coffee: {resources['water']}g")
+        print(f"Money: ${today_take}")
+    else:
+        coffee = menu[user_input]
+        if can_make(coffee['ingredients']) :
+            print("Please insert coins.")
+            quaters_input = int(input("how many quarters?: "))
+            dimes_input = int(input("how many dimes?: "))
+            nickels_input = int(input("how many nickels?: "))
+            cents_input = int(input("how many cents?: "))
+            check_changes(coffee['ingredients'], user_input, quaters_input, dimes_input, nickels_input, cents_input)
 
-    check_all_take(quaters_input, dimes_input, nickels_input, cents_input)
+            
 
-    print(f"Here is ${} in change.")
-    print(f"Here is your espresso ☕. Enjoy!")
+
+
 
 
