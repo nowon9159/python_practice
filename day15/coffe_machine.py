@@ -41,7 +41,6 @@ menu = {
     }
 }
 
-
 # 현재 남은 리소스 선언
 resources = {
     "water": 300, # ml
@@ -68,7 +67,6 @@ def make_coffee(items, user_input):
     for item in items:
         resources[item] -= items[item]
     print(f"Here is your {user_input} ☕. Enjoy!")
-
 
 def check_changes(ingre_coffee, user_input, quaters_input, dimes_input, nickels_input, cents_input):
     cost = menu[user_input]['cost']
@@ -100,10 +98,3 @@ while True :
             nickels_input = int(input("how many nickels?: "))
             cents_input = int(input("how many cents?: "))
             check_changes(coffee['ingredients'], user_input, quaters_input, dimes_input, nickels_input, cents_input)
-
-            
-
-
-
-
-
