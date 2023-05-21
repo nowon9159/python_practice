@@ -23,7 +23,10 @@ class Menu:
         """Returns all the names of the available menu items"""
         options = ""
         for item in self.menu:
-            options += f"{item.name}/"
+            if item.name == 'cappuccino' :
+                options += f"{item.name}"
+            else :
+                options += f"{item.name}/"
         return options
 
     def find_drink(self, order_name):
