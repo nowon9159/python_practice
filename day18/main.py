@@ -20,7 +20,13 @@ tim.color("red")
 #   tim.left(90)
 
 
+# 과제 2
+# 1. 점선 그리기
+# 2. 선그리기(10) 안그리고걸어가기(10) 를 15회 반복하시오
 
+for i in range(15):
+    tim.forward(10)
+    tim.setpos(10,0)
 
 
 screen = Screen()
