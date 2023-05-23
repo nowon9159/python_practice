@@ -3,3 +3,17 @@
 # 1. 질문 클래스 만들기
 # 2. 
 
+from data import question_data
+from question_model import Question
+from quiz_brain import QuizBrain
+# Write a for loop to iterate over the question_data.
+# Create a Question object from each entry in question_data.
+# Append each Question object to the question_bank
+
+question_bank = []
+
+for i in question_data:
+    new_q = Question(i["text"], i["answer"])
+    question_bank.append(new_q)
+
+QuizBrain(question_bank)
