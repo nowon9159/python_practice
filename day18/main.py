@@ -77,5 +77,12 @@ tim.color("red")
     
 # 과제 5
 # 1. 스피로 그래프 그리기
-
+# 2. 반지름이 100 인 원을 그리기
+tim.speed('fastest')
+for angle in range(0, 360, 2):
+    tim.circle(100)
+    tim.home()
+    tim.left(angle)
+    if angle == 360:
+        break
 
