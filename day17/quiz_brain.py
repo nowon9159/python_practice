@@ -20,8 +20,8 @@ class QuizBrain:
     def next_question(self):
         current_question = self.question_list[self.question_number] # 한 클래스 내에서 선언한 속성은 . 을 통해 다른 메소드에서도 불러올 수 있다.
         self.question_number += 1
-        user_answer = input(f"Q.{self.question_number}: {current_question.text} (True/False)?: ")
-        self.check_answer(user_answer, current_question.answer)
+        user_answer = input(f"Q.{self.question_number}: {current_question.question} (True/False)?: ")
+        self.check_answer(user_answer, current_question.correct_answer)
 
     def check_answer(self, user_answer, correct_answer):
         # 정답 비교하고 스코어 올리기

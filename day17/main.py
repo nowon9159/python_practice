@@ -13,7 +13,9 @@ from quiz_brain import QuizBrain
 question_bank = []
 
 for i in question_data:
-    new_q = Question(i["text"], i["answer"])
+    question = i["question"]
+    answer = i["correct_answer"]
+    new_q = Question(question, answer)
     question_bank.append(new_q)
 
 quiz = QuizBrain(question_bank)
