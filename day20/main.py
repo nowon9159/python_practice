@@ -21,12 +21,17 @@ screen.tracer(0)
 snake = Snake()
 
 screen.listen()
+screen.onkey(key="Up", fun=snake.up)
+screen.onkey(key="Down", fun=snake.down)
+screen.onkey(key="Left", fun=snake.left)
+screen.onkey(key="Right", fun=snake.right)
 
 while True :
     screen.update()
     time.sleep(0.1)
     
     snake.move()
+    if
 
 
 screen.exitonclick()
