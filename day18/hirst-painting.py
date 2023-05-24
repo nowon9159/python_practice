@@ -21,8 +21,9 @@ import random
 tim = Turtle()
 screen = Screen()
 screen.colormode(255)
-screen.screensize(1080,720)
+screen.screensize(1080,2000)
 tim.penup()
+tim.ht()
 tim.speed('fastest')
 # 과제 2
 # 가로 10줄 세로 10줄의 점을 찍어야한다.
@@ -34,6 +35,7 @@ def get_color():
 for i in range(0,100):
     tim.dot(20, get_color())
     tim.forward(50)
+    print(tim.position())
     for j in range(0,10):
         if tim.position() == (float(500), float(j*50)):
             tim.home()
