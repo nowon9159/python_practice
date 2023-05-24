@@ -74,15 +74,28 @@ tim.color("red")
 #     tim.forward(30)
 #     tim.seth(random.choice(angle))
 #     tim.color(random.choice(color))
-    
+
 # 과제 5
 # 1. 스피로 그래프 그리기
 # 2. 반지름이 100 인 원을 그리기
-tim.speed('fastest')
-for angle in range(0, 360, 2):
-    tim.circle(100)
-    tim.home()
-    tim.left(angle)
-    if angle == 360:
-        break
 
+# def random_color():
+#     r = random.randint(0, 255)
+#     g = random.randint(0, 255)
+#     b = random.randint(0, 255)
+#     color_tuple = (r, g, b)
+#     return color_tuple
+
+# tim.speed('fastest')
+# screen = Screen()
+# for angle in range(0, 360, 2):
+#     screen.colormode(255)
+#     tim.color(random_color())
+#     tim.circle(100)
+#     tim.home()
+#     tim.left(angle)
+# screen.exitonclick()
+
+# 과제 6
+# 허스트 페인팅 프로젝트
+# 이미지에서 RGB 값 추출하기
