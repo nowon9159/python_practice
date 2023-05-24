@@ -34,7 +34,6 @@ def get_color():
 for i in range(0,100):
     tim.dot(20, get_color())
     tim.forward(50)
-    print(tim.position())
     for j in range(0,10):
         if tim.position() == (float(500), float(j*50)):
             tim.home()
