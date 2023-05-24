@@ -1,6 +1,6 @@
 # 이미지를 이용한 색상 리스트 추출
 # 리스트를 하나 추출했기 때문에 주석처리
-# import colorgra리
+# import colorgram
 
 # colors = colorgram.extract("spot_painting.png", 30)
 

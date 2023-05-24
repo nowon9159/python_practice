@@ -1,14 +1,12 @@
 ## 터틀 모듈을 이용한 그래픽 작업
 
 
-## 로직
-#
-
 from turtle import Turtle, Screen
 import random
 
 tim = Turtle()
 tim.color("red")
+screen = Screen()
 
 
 # 과제 1
@@ -79,23 +77,25 @@ tim.color("red")
 # 1. 스피로 그래프 그리기
 # 2. 반지름이 100 인 원을 그리기
 
-# def random_color():
-#     r = random.randint(0, 255)
-#     g = random.randint(0, 255)
-#     b = random.randint(0, 255)
-#     color_tuple = (r, g, b)
-#     return color_tuple
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    color_tuple = (r, g, b)
+    return color_tuple
 
-# tim.speed('fastest')
-# screen = Screen()
-# for angle in range(0, 360, 2):
-#     screen.colormode(255)
-#     tim.color(random_color())
-#     tim.circle(100)
-#     tim.home()
-#     tim.left(angle)
-# screen.exitonclick()
+tim.speed('fastest')
+screen = Screen()
+for angle in range(0, 360, 2):
+    screen.colormode(255)
+    tim.color(random_color())
+    tim.circle(100)
+    tim.home()
+    tim.left(angle)
+screen.exitonclick()
 
 # 과제 6
 # 허스트 페인팅 프로젝트
 # 이미지에서 RGB 값 추출하기
+
+
