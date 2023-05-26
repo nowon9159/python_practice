@@ -44,5 +44,9 @@ while True :
         scoreboard.game_over()
         screen.exitonclick()
         break
-
     
+    for i in snake.segments[1:]:
+        if snake.head.distance(i) < 10:
+            scoreboard.game_over()
+            screen.exitonclick()
+            break
