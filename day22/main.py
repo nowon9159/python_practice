@@ -13,3 +13,28 @@
 # 4.1 움직인다 어떻게? 대각선 일정 각도로 그런데 X축 끝 벽에 부딪히면 튕겨져 나감 어떻게? 일정 각도로
 # 4.2 패들에 공이 부딪히면 공이 튕겨 나간다
 
+from turtle import Screen
+from paddle import Paddle
+import random
+import time
+
+screen = Screen()
+screen.setup(width=800, height=600)
+screen.bgcolor("#000000")
+screen.title("My Pong Game!")
+screen.tracer(0)
+
+my_paddle = Paddle()
+screen.listen()
+# screen.onkey(key="Up", fun=paddle.up)
+# screen.onkey(key="Down", fun=paddle.down)
+
+while True:
+    screen.update()
+    time.sleep(0.1)
+    
+
+    screen.exitonclick()
+
+
+
