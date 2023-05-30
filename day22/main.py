@@ -16,6 +16,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import random
 import time
 
@@ -30,8 +31,8 @@ ENEMY_POSITION = (350, 0)
 
 user_paddle = Paddle(USER_POSITION)
 enemy_paddle = Paddle(ENEMY_POSITION)
-
 ball = Ball()
+scoreboard = Scoreboard()
 
 screen.listen()
 
@@ -51,6 +52,11 @@ while True:
     if ball.distance(enemy_paddle) < 50 and ball.xcor() > 320 or ball.distance(user_paddle) < 50 and ball.xcor() < -320 :
         ball.bounce_x()
 
-screen.exitonclick()
+    if ball.distance(enemy_paddle) > 50 and ball.xcor() > 320 or ball.distance(user_paddle) > 50 and ball.xcor() < -320 :
+        scoreboard.game_over
+        screen.exitonclick()
+        break
+
+
 
 
