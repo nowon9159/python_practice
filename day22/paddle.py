@@ -1,31 +1,18 @@
 from turtle import Turtle
 
-USER_POSITION = [(-350, -40), (-350, -20), (-350, 0), (-350, 20), (-350, 40)]
-ENEMY_POSITION = [(350, -40), (350, -20), (350, 0), (350, 20), (350, 40)]
-
 class Paddle(Turtle):
-    def __init__(self):
+    def __init__(self, position):
         super().__init__()
-        self.init_enemy_paddle(ENEMY_POSITION)
-        self.init_user_paddle(USER_POSITION)
+        self.shape("square")
+        self.color("white")
+        self.shapesize(stretch_len=1, stretch_wid=5)
+        self.penup()
+        self.goto(position)
 
-    def init_enemy_paddle(self, position):
-        for position in ENEMY_POSITION:
-            self.add_segment(position)
+    def go_up(self):
+        new_y = self.ycor() + 20
+        self.goto(self.xcor(), new_y)
 
-    def init_user_paddle(self, position):
-        for position in USER_POSITION:
-            self.add_segment(position)
-
-    def add_segment(self, position):
-        self.paddle = Turtle(shape="square")
-        self.paddle.goto(position)
-        self.paddle.penup()
-        self.paddle.color("white")
-
-    # def move(self):
-
-
-    # def up(self):
-
-    # def down(self):
+    def go_down(self):
+        new_y = self.ycor() - 20
+        self.goto(self.xcor(), new_y)

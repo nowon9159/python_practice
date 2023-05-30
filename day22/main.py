@@ -15,6 +15,7 @@
 
 from turtle import Screen
 from paddle import Paddle
+from ball import Ball
 import random
 import time
 
@@ -24,17 +25,32 @@ screen.bgcolor("#000000")
 screen.title("My Pong Game!")
 screen.tracer(0)
 
-my_paddle = Paddle()
+USER_POSITION = (-350, 0)
+ENEMY_POSITION = (350, 0)
+
+user_paddle = Paddle(USER_POSITION)
+enemy_paddle = Paddle(ENEMY_POSITION)
+
+ball = Ball()
+
 screen.listen()
-# screen.onkey(key="Up", fun=paddle.up)
-# screen.onkey(key="Down", fun=paddle.down)
+
+screen.onkey(key="Up", fun=enemy_paddle.go_up)
+screen.onkey(key="Down", fun=enemy_paddle.go_down)
+screen.onkey(key="w", fun=user_paddle.go_up)
+screen.onkey(key="s", fun=user_paddle.go_down)
 
 while True:
-    screen.update()
     time.sleep(0.1)
-    
+    screen.update()
+    ball.move()
 
-    screen.exitonclick()
+    if ball.ycor() > 280 or ball.ycor() < -280 :
+        ball.bounce_y()
 
+    if ball.distance(enemy_paddle) < 50 and ball.xcor() > 320 or ball.distance(user_paddle) < 50 and ball.xcor() < -320 :
+        ball.bounce_x()
+
+screen.exitonclick()
 
 
