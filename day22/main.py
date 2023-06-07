@@ -42,7 +42,7 @@ screen.onkey(key="w", fun=user_paddle.go_up)
 screen.onkey(key="s", fun=user_paddle.go_down)
 
 while True:
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
     screen.update()
     ball.move()
 
@@ -52,11 +52,13 @@ while True:
     if ball.distance(enemy_paddle) < 50 and ball.xcor() > 320 or ball.distance(user_paddle) < 50 and ball.xcor() < -320 :
         ball.bounce_x()
 
-    if ball.distance(enemy_paddle) > 50 and ball.xcor() > 320 or ball.distance(user_paddle) > 50 and ball.xcor() < -320 :
-        scoreboard.game_over
-        screen.exitonclick()
-        break
+    if ball.xcor() > 380:
+        ball.reset_position()
+        scoreboard.l_point()
 
+    if ball.xcor() < -380:
+        ball.reset_position()
+        scoreboard.r_point()
 
 
 
